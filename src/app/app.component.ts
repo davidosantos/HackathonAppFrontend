@@ -26,12 +26,19 @@ import { PiechartComponent } from "./piechart/piechart.component";
 })
 export class AppComponent {
 
+
   title = 'HackatonAppFrontend';
+
+  resposta = '';
 
   @ViewChild('piechart')
   piechart!: PiechartComponent;
 
   getData() {
     this.piechart.getData();
+  }
+
+  getRespostas($event: any) {
+    this.resposta = $event;
   }
 }

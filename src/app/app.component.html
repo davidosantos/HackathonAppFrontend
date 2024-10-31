@@ -12,14 +12,14 @@
 
         <mat-form-field class=" w-100">
           <mat-label>Resposta</mat-label>
-          <textarea matInput placeholder="resposta..."></textarea>
+          <textarea matInput placeholder="resposta..." [value]="resposta"></textarea>
         </mat-form-field>
       </form>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <app-piechart #piechart></app-piechart>
+      <app-piechart (respostas)="getRespostas($event)" #piechart></app-piechart>
   </div>
 </div>
 

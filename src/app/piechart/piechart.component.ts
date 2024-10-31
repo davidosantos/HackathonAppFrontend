@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { HttpService } from './../http.service';
 
@@ -11,16 +11,23 @@ import { HttpService } from './../http.service';
 export class PiechartComponent {
   public chart: any;
 
+  @Output()
+  respostas =  new EventEmitter<string>();
+
   sampleChartData = {
     labels: ['Label1', 'Label2', 'Label3', 'Label4', 'Label5'],
     data: [1, 2, 3, 4, 5]
   };
 
 
+
+
   constructor(private httpService: HttpService) { }
 
 
   getData() {
+
+    this.respostas.emit('test');
 
     this.httpService.getData().subscribe(data => {
       this.createChart(data);
@@ -55,11 +62,14 @@ export class PiechartComponent {
       ]
       },
       options: {
-        aspectRatio: 2.5,
+        aspectRatio: 3.7,
         layout: {
           padding: 20
         },
+        responsive: true,
+        maintainAspectRatio: true,
         plugins: {
+
           title: {
             display: true,
             text: 'Classificação',
