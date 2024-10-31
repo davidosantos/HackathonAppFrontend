@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { HttpService } from './../http.service';
 
@@ -13,6 +13,9 @@ export class PiechartComponent {
 
   @Output()
   respostas =  new EventEmitter<string>();
+
+  @Input()
+  pergunta = ''
 
   sampleChartData = {
     labels: ['Label1', 'Label2', 'Label3', 'Label4', 'Label5'],
@@ -33,14 +36,12 @@ export class PiechartComponent {
       this.createChart(data);
     });
 
-    this.httpService.postData({}).subscribe(data => {
-      this.createChart(data);
-    });
+
   }
 
   postData() {
 
-    this.httpService.postData({}).subscribe(data => {
+    this.httpService.postData({pergunta: this.pergunta}).subscribe(data => {
       this.createChart(data);
     });
   }
@@ -53,8 +54,8 @@ export class PiechartComponent {
 
   createChart(data: any) {
     this.chart = new Chart("MyChart", {
-      type: 'pie',
-      // type: 'doughnut',
+      //type: 'pie',
+       type: 'doughnut',
       data: {
         labels: data.labels,
         datasets: [

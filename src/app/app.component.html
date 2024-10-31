@@ -1,11 +1,11 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
-      <form class="m-3">
+      <form class="m-3" onsubmit="getData()">
         <mat-form-field class="w-100">
           <mat-label>Pergunta</mat-label>
-          <input matInput placeholder="Pergunta..." value="">
-          <button matSuffix mat-icon-button (click)="getData()" >
+          <input matInput placeholder="Pergunta..." [(ngModel)]="pergunta" [ngModelOptions]="{standalone: true}">
+          <button  matSuffix mat-icon-button (click)="getData()" >
             <mat-icon>send</mat-icon>
           </button>
         </mat-form-field>
@@ -19,7 +19,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <app-piechart (respostas)="getRespostas($event)" #piechart></app-piechart>
+      <app-piechart [pergunta]="pergunta" (respostas)="getRespostas($event)" #piechart></app-piechart>
   </div>
 </div>
 

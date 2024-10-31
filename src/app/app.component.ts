@@ -10,6 +10,7 @@ import { PiechartComponent } from "./piechart/piechart.component";
 
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -30,6 +31,7 @@ export class AppComponent {
   title = 'HackatonAppFrontend';
 
   resposta = '';
+  pergunta = '';
 
   @ViewChild('piechart')
   piechart!: PiechartComponent;
